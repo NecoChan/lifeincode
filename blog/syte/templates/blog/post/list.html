@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+{% block title %}Life in code{% endblock %}
+{% block content %}
+ {% for post in posts %}
+ <h2>
+ <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+ </h2>
+ <p class="date">Опубликован: {{ post.publish }} автор: {{ post.author }}</p>
+ {{ post.body|truncatewords:20|linebreaks }}
+ <p>{{post.image}}</p>
+ {% endfor %}
+
+
+
+<!-- <div class="pagination">
+ <span class="step-links">
+ {% if page.has_previous %}
+ <a href="?page={{page.previous_page_number}}">Previous</a>
+ {% endif %}
+ <span class="current">
+ Page {{ page.number }} of {{ page.paginator.num_pages }}.
+ </span>
+ {% if page.has_next %}
+ <a href="?page={{ page.next_page_number }}">Next</a>
+ {% endif %}
+ </span>
+</div> -->
+
+
+
+
+{% endblock %}
