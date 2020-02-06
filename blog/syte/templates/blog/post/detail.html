@@ -1,9 +1,12 @@
 <h3><a href="/">Главная</a></h3>
 {% extends "blog/base.html" %}
+{% load static %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
  <h1>{{ post.title }}</h1>
- <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+<img class="img_post" src="{% if post.image %}{{ post.image.url }}{% else %}
+    {% static "media/no_image.png" %}{% endif %}">
+ <!-- <p class="date">Published {{ post.publish }} by {{ post.author }}</p> -->
  {{ post.body|linebreaks }}
  {{post.image}}
  <!-- Блок с комментариями -->

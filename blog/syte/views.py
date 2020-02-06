@@ -66,3 +66,5 @@ def post_detail(request, year, month, day, post):
 #         # Если номер страницы больше, чем общее количество страниц, возвращаем последнюю.
 #         posts = paginator.page(paginator.num_pages)
 #     return render(request,'blog/post/list.html', {'page': page, 'posts': posts})
+def book(request):
+    return render(request, 'blog/book.html')
