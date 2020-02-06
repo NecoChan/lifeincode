@@ -16,7 +16,7 @@ class Post(models.Model):
     slug = models.SlugField('URL',max_length=200,unique_for_date='publish') # URL на наши публикации.
     author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='blog_posts')
     body = models.TextField('Текст')
-    image = models.ImageField('Изображение',upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField('Изображение',upload_to='', blank=True)
     publish = models.DateTimeField("Дата публикации",default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

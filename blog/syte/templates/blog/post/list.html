@@ -1,13 +1,20 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% block title %}Life in code{% endblock %}
 {% block content %}
  {% for post in posts %}
- <h2>
- <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+ <div class="block_post">
+<!-- <img src="media/{{post.image}}" alt=""> -->
+<img class="img_post" src="{% if post.image %}{{ post.image.url }}{% else %}
+    {% static "media/no_image.png" %}{% endif %}">
+ <h2 class="posts_title">
+ <a class="post_titel" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
  </h2>
- <p class="date">Опубликован: {{ post.publish }} автор: {{ post.author }}</p>
- {{ post.body|truncatewords:20|linebreaks }}
- <p>{{post.image}}</p>
+ {{ post.body|truncatewords:10|linebreaks }}
+ <!-- <p class="date post_text">Опубликован: {{ post.publish }} автор: {{ post.author }}</p> -->
+ 
+</div>
+
  {% endfor %}
 
 
